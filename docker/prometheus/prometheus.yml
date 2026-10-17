@@ -1,0 +1,25 @@
+global:
+    scrape_interval: 5s
+
+scrape_configs:
+    - job_name: api
+      static_configs:
+          - targets: ['api:3000']
+
+    - job_name: consumer
+      dns_sd_configs:
+          - names: ['consumer']
+            type: A
+            port: 9464
+
+    - job_name: outbox-publisher
+      dns_sd_configs:
+          - names: ['outbox-publisher']
+            type: A
+            port: 9464
+
+    - job_name: reference-worker
+      dns_sd_configs:
+          - names: ['reference-worker']
+            type: A
+            port: 9464

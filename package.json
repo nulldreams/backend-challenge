@@ -1,0 +1,37 @@
+{
+    "name": "wagering-rebuild",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev:api": "bun --watch src/apps/api/main.ts",
+        "dev:consumer": "bun --watch src/apps/consumer/main.ts",
+        "dev:outbox-publisher": "bun --watch src/apps/outbox-publisher/main.ts",
+        "dev:reference-worker": "bun --watch src/apps/reference-worker/main.ts",
+        "test:unit": "bun test tests/unit --coverage",
+        "test:integration": "bun test --preload ./tests/support/preload.ts --timeout 60000 tests/integration",
+        "test:concurrency": "bun test --preload ./tests/support/preload.ts --timeout 120000 tests/concurrency",
+        "docker:up": "docker compose -f docker/docker-compose.yml up -d --build --wait",
+        "docker:down": "docker compose -f docker/docker-compose.yml down",
+        "migration:up": "bun src/apps/migrate/main.ts up",
+        "migration:down": "bun src/apps/migrate/main.ts down",
+        "migration:create": "bun src/apps/migrate/main.ts create",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@aws-sdk/client-sqs": "^3.1151.0",
+        "@mikro-orm/core": "^7.2.5",
+        "@mikro-orm/migrations": "^7.2.5",
+        "@mikro-orm/postgresql": "^7.2.5",
+        "@nestjs/common": "^12.1.3",
+        "@nestjs/core": "^12.1.3",
+        "@nestjs/platform-express": "^12.1.3",
+        "prom-client": "^15.1.3",
+        "reflect-metadata": "^0.2.2",
+        "rxjs": "^7.8.2",
+        "zod": "^4.6.7"
+    },
+    "devDependencies": {
+        "@types/bun": "^1.4.3",
+        "typescript": "^7.0.2"
+    }
+}

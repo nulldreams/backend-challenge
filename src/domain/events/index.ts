@@ -1,0 +1,7 @@
+export * from './integration-event'
+export * from './integration-event.interface'
+export * from './wager-transaction-event-data'
+export * from './wager-transaction-pending-reference.event'
+export * from './wager-transaction-processed.event'
+export * from './wager-transaction-rejected.event'
+export * from './wallet-balance-changed.event'

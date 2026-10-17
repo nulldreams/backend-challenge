@@ -1,0 +1,41 @@
+import { InboxMessageState, ReceiveInboxMessageProps } from './inbox-message.interface'
+
+export class InboxMessage {
+    private constructor(
+        public readonly messageId: string,
+        public readonly consumerName: string,
+        public readonly payloadHash: string,
+        public readonly receivedAt: Date,
+        private _processedAt?: Date,
+    ) {}
+
+    static receive(props: ReceiveInboxMessageProps): InboxMessage {
+        return new InboxMessage(props.messageId, props.consumerName, props.payloadHash, props.receivedAt)
+    }
+
+    static rehydrate(state: InboxMessageState): InboxMessage {
+        return new InboxMessage(
+            state.messageId,
+            state.consumerName,
+            state.payloadHash,
+            state.receivedAt,
+            state.processedAt,
+        )
+    }
+
+    get processedAt(): Date | undefined {
+        return this._processedAt
+    }
+
+    isProcessed(): boolean {
+        return this._processedAt !== undefined
+    }
+
+    markProcessed(at: Date): void {
+        this._processedAt = at
+    }
+
+    matchesPayload(payloadHash: string): boolean {
+        return this.payloadHash === payloadHash
+    }
+}

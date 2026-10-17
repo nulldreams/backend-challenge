@@ -1,0 +1,3 @@
+# Scripts e env_file rodam no Linux dos containers: CRLF quebra o bash e vaza '\r' para os valores.
+*.sh text eol=lf
+.env* text eol=lf

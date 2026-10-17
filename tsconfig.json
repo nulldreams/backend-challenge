@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "lib": ["ES2022"],
+        "types": ["bun"],
+
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+
+        "skipLibCheck": true,
+        "noEmit": true,
+        "paths": {
+            "@apps/*": ["./src/apps/*"],
+            "@application/*": ["./src/application/*"],
+            "@domain/*": ["./src/domain/*"],
+            "@infra/*": ["./src/infra/*"],
+            "@tests/*": ["./tests/*"],
+            "@migrations": ["./migrations/index.ts"]
+        }
+    },
+    "include": ["src", "tests", "migrations"]
+}

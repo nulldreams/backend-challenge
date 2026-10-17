@@ -1,0 +1,5 @@
+export * from './mikro-orm-inbox-message.repository'
+export * from './mikro-orm-outbox-message.repository'
+export * from './mikro-orm-wager-transaction.repository'
+export * from './mikro-orm-wallet-ledger-entry.repository'
+export * from './mikro-orm-wallet.repository'
